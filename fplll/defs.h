@@ -204,8 +204,9 @@ enum LLLFlags
   LLL_DEFAULT   = 0
 };
 
-/** This enum covers the shortest vector methods with default SVPM_PROVED
- * or, alternatively SVPM_FAST which has effect on the ErrorBoundedEvaluator.
+/** This enum is for selecting the ErrorBoundedEvaluator which has effect on
+ * whether the shortest vector method solves an exact (default SVPM_PROVED)
+ * or, alternatively faster, an approximative solution (SVPM_FAST).
  */
 enum SVPMethod
 {
@@ -213,16 +214,18 @@ enum SVPMethod
   SVPM_PROVED = 2   ///< uses the ExactErrorBoundedEvaluator
 };
 
-/** This enum covers the closest vector methods with default CVPM_FAST
- * or, alternatively CVPM_PROVED needs to reset enumeration below depth with maximal r_i.
+
+/** This enum is for selecting whether the closest vector method finds an 
+ * approximate solution (default CVPM_FAST) or, alternatively more slowly, an 
+ * exact solution (CVPM_PROVED) that resets enumeration below depth with maximal r_i.
  */
 enum CVPMethod
 {
   CVPM_FAST   = 0,  ///< is the standard behaviour
-  CVPM_PROVED = 2   ///< needs to reset enumeration below depth with maximal r_i
+  CVPM_PROVED = 2   ///< finds exact solution, but is slower
 };
 
-/** This enum covers the shortest vector flags with default SVP_DEFAULT
+/** This enum is for selecting the shortest vector flags with default SVP_DEFAULT
  * or one of SVP_VERBOSE, SVP_OVERRIDE_BND, and SVP_DUAL.
  */
 enum SVPFlags
@@ -233,7 +236,7 @@ enum SVPFlags
   SVP_DUAL         = 4  ///< computing the shortest vector of the dual lattice (in the dual basis) instead
 };
 
-/** This enum covers the closest vector flags with default SVP_DEFAULT(!)
+/** This enum is for selecting the closest vector flags with default SVP_DEFAULT(!)
  * or, alternatively SVP_VERBOSE(!), both taken from SVPFlags.
  */
 enum CVPFlags
